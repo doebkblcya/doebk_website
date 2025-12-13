@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doebkblcya</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">doebkblcya</div>
+        <input type="checkbox" id="navbar-toggle" class="navbar-toggle">
+        <label for="navbar-toggle" class="navbar-icon">☰</label>
+        <div class="navbar-links">
+            <a href="https://frp.doebkblcya.com" target="_blank">FRP Dashboard</a>
+            <a href="https://nas.doebkblcya.com" target="_blank">飞牛NAS</a>
+            <!-- 可继续添加子域名按钮 -->
+        </div>
+    </nav>
+    <main class="main-content">
+        <section class="welcome-section">
+            <h1>Hello!</h1>
+        </section>
+        <section class="guestbook-section">
+            <h2>留言板</h2>
+            <form class="guestbook-form" method="post">
+                <input type="text" name="name" placeholder="你的名字" required>
+                <textarea name="message" placeholder="留言内容" required></textarea>
+                <button type="submit">提交留言</button>
+            </form>
+            <div class="guestbook-messages">
+                {% for msg in messages %}
+                <div class="guestbook-message">
+                    <span class="guestbook-name">{{ msg.name }}：</span>
+                    <span class="guestbook-text">{{ msg.message }}</span>
+                    <span class="guestbook-time" style="float:right;color:#888;font-size:0.9em;">{{
+                        msg.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                </div>
+                {% else %}
+                <div class="guestbook-message">暂无留言，快来抢沙发！</div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
