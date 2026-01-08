@@ -241,3 +241,6 @@ __pycache__/
 *.bak
 *.swp
 *.swo
+*.pid
+
+manage.sh
